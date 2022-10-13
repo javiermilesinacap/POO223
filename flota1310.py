@@ -1,3 +1,4 @@
+import pygame
 class Vehiculo:
     def acelerar(self,cuanto=0)-> None:
         self.velocidad += 10 + cuanto
@@ -18,18 +19,19 @@ class Vehiculo:
         self.color= color
     def __str__(self)->str:
         return (f'El vehiculo {self.modelo} patente {self.ppu} color {self.color} va a {self.velocidad} km/h')
-base=[]
+objeto = Vehiculo()
+pygame.init()
+ventana = pygame.display.set_mode((800,600))
+autito = pygame.image.load('./car.png').convert_alpha()
 while(True):
-    print("1 crear vehiculo, 9.- imprimir 0 salir")
-    opcion = int(input())
-    if(opcion==1):
-        a = input("Ingrese marca")
-        b = input("Ingrese patenet")
-        objeto = Vehiculo(100,12.4,33.6,a,b,"Gris")
-        print(objeto)
-        objeto.acelerar()
-        print(objeto.velocidad)
-        base.append(objeto)
-    if(opcion==9):
-        print(base)
-    
+    for event in pygame.event.get():
+        if(event.type== pygame.KEYDOWN and event.key == pygame.K_w):
+            objeto.acelerar()
+            objeto.avanzar()
+            print(objeto)    
+        if(event.type== pygame.KEYDOWN and event.key == pygame.K_s):
+            objeto.frenar()
+            objeto.retroceder() 
+            print(objeto)  
+        ventana.blit(autito,(objeto.lat,300))
+        pygame.display.update() 
