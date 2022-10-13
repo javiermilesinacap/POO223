@@ -52,3 +52,6 @@ while(opcion != 0):
         encender()
     elif(opcion==0):
         print("Fin del programa, hasta pronto")
+vehiculo = {'velocidad': velocidad, 'distancia':distancia}
+flota = []
+flota.append(vehiculo)
