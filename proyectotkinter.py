@@ -3,7 +3,8 @@ arriba = tkinter.Tk()
 arriba.title("Hola Mundo")
 arriba.geometry("800x800")
 def Accion():
-    print("Hola Mundo")
+    global entry
+    print("Hola Mundo"+str(entry.get()))
 boton = tkinter.Button(arriba, text="Hola Mundo",command=Accion)
 #boton.pack()
 boton.grid(row=0,column=0)
